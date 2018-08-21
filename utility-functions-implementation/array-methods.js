@@ -14,18 +14,36 @@ Array.prototype.myForEach = function(callback){
 
 
 // **************************** Map implementation *******************************
-Array.prototype.myMap = function(callback){
-    let result=[];
-    for(let i=0;i<this.length;i++){
-        result.push(callback(this[i], i , this));
+// Array.prototype.myMap = function(callback){
+//     let result=[];
+//     for(let i=0;i<this.length;i++){
+//         result.push(callback(this[i], i , this));
         
-    }
+//     }
+//     return result;
+// }
+
+// let arr = [1,2,3,4,5];
+// let arr2 = arr.myMap( (curr,index, arr) => {
+//     return curr*10;
+// })
+
+// console.log(`Arr2 : ${arr2}`);
+
+
+
+// *************************** Filter implementation ******************************
+
+Array.prototype.myFilter = function(callback){
+    let result = [];
+    for(let i=0;i < this.length;i++)
+        if(callback(this[i],i, this))
+            result.push(this[i]);
     return result;
 }
 
 let arr = [1,2,3,4,5];
-let arr2 = arr.myMap( (curr,index, arr) => {
-    return curr*10;
-})
-
-console.log(`Arr2 : ${arr2}`);
+let arr2= arr.myFilter( (curr, index, arr) => {
+    return curr> 3;
+});
+console.log(`Arr2: ${arr2}`);
